@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import variaveis from '../../styles/variaveis'
 
 export const Card = styled.div`
-  background-color: #0074b4;
+  background-color: ${variaveis.azul};
   width: 400px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 16px;
   margin: 10px auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
 export const Nome = styled.h3`
@@ -35,4 +37,10 @@ export const Botao = styled.button`
   background-color: #2f3640;
   border-radius: 8px;
   margin-right: 8px;
+`
+export const BotaoSalvar = styled(Botao)`
+  background-color: ${variaveis.amarelo};
+`
+export const BotaoCancelar = styled(Botao)`
+  background-color: ${variaveis.vermelho};
 `

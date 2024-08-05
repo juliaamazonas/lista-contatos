@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import variaveis from '../../styles/variaveis'
 
 export const Header = styled.header`
   background-color: #fff;
@@ -9,6 +10,6 @@ export const Header = styled.header`
 
 export const Titulo = styled.h1`
   font-weight: 300;
-  color: #0074b4;
+  color: ${variaveis.azul};
   padding: 16px;
 `
