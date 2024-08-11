@@ -16,10 +16,34 @@ export const Nome = styled.h3`
   font-weight: bold;
 `
 
+export const NomeInput = styled.input`
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: ${variaveis.azul};
+  border: none;
+  padding: 4px;
+`
+
 export const DadosContato = styled.p`
   color: #fff;
   font-size: 14px;
   line-height: 24px;
+`
+export const NumeroInput = styled.input`
+  color: #fff;
+  font-size: 14px;
+  background-color: ${variaveis.azul};
+  border: none;
+  margin: 8px 0;
+  padding: 4px;
+`
+export const EmailInput = styled.input`
+  color: #fff;
+  font-size: 14px;
+  background-color: ${variaveis.azul};
+  border: none;
+  padding: 4px;
 `
 
 export const BarraAcoes = styled.div`

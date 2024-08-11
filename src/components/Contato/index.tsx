@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
-import { remover } from '../../store/reducers/contatos'
+import { atualizar, remover } from '../../store/reducers/contatos'
 import ContatoClass from '../../models/Contato'
 
 type Props = ContatoClass
@@ -10,22 +10,79 @@ const Contato = ({ nome, numero, email, id }: Props) => {
   const dispatch = useDispatch()
   const [editandoContato, setEditandoContato] = useState(false)
 
+  // Armazena o valor original
+  const [nomeOriginal, setNomeOriginal] = useState(nome)
+  const [numeroOriginal, setNumeroOriginal] = useState(numero)
+  const [emailOriginal, setEmailOriginal] = useState(email)
+
+  // Armazena o valor que pode ser editado
+  const [nomeInput, setNome] = useState(nome)
+  const [numeroInput, setNumero] = useState(numero)
+  const [emailInput, setEmail] = useState(email)
+
+  const handleEdit = () => {
+    setEditandoContato(true)
+    // Copia os valores originais para os inputs editáveis
+    setNome(nomeOriginal)
+    setNumero(numeroOriginal)
+    setEmail(emailOriginal)
+  }
+
+  const handleCancel = () => {
+    setEditandoContato(false)
+    // Reverte os valores para o original
+    setNome(nomeOriginal)
+    setNumero(numeroOriginal)
+    setEmail(emailOriginal)
+  }
+
+  const handleSave = () => {
+    setEditandoContato(false)
+    // Atualiza os valores originais com os valores editados
+    setNomeOriginal(nomeInput)
+    setNumeroOriginal(numeroInput)
+    setEmailOriginal(emailInput)
+
+    // Despacha a ação para atualizar no estado global
+    dispatch(
+      atualizar({ id, nome: nomeInput, numero: numeroInput, email: emailInput })
+    )
+  }
+
   return (
     <S.Card>
-      <S.Nome>{nome}</S.Nome>
-      <S.DadosContato>{numero}</S.DadosContato>
-      <S.DadosContato>{email}</S.DadosContato>
+      {editandoContato ? (
+        <>
+          <S.NomeInput
+            value={nomeInput}
+            onChange={(evento) => setNome(evento.target.value)}
+          />
+          <S.NumeroInput
+            value={numeroInput}
+            onChange={(evento) => setNumero(evento.target.value)}
+          />
+          <S.EmailInput
+            value={emailInput}
+            onChange={(evento) => setEmail(evento.target.value)}
+          />
+        </>
+      ) : (
+        <>
+          <S.Nome>{nomeInput}</S.Nome>
+          <S.DadosContato>{numeroInput}</S.DadosContato>
+          <S.DadosContato>{emailInput}</S.DadosContato>
+        </>
+      )}
+
       <S.BarraAcoes>
         {editandoContato ? (
           <>
-            <S.BotaoSalvar>Salvar</S.BotaoSalvar>
-            <S.BotaoCancelar onClick={() => setEditandoContato(false)}>
-              Cancelar
-            </S.BotaoCancelar>
+            <S.BotaoSalvar onClick={handleSave}>Salvar</S.BotaoSalvar>
+            <S.BotaoCancelar onClick={handleCancel}>Cancelar</S.BotaoCancelar>
           </>
         ) : (
           <>
-            <S.Botao onClick={() => setEditandoContato(true)}>Editar</S.Botao>
+            <S.Botao onClick={handleEdit}>Editar</S.Botao>
             <S.BotaoCancelar onClick={() => dispatch(remover(id))}>
               Remover
             </S.BotaoCancelar>
