@@ -1,18 +1,26 @@
 import { Provider } from 'react-redux'
-import BotaoAdd from './containers/BotaoAdd'
-import Header from './containers/Header'
-import ListaDeContatos from './containers/ListaDeContatos'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import EstiloGlobal, { Container } from './styles'
 import store from './store'
+import Home from './pages/Home'
+
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/adicionar',
+    element: <h1>home</h1>
+  }
+])
 
 function App() {
   return (
     <Provider store={store}>
       <EstiloGlobal />
       <Container>
-        <Header />
-        <ListaDeContatos />
-        <BotaoAdd />
+        <RouterProvider router={rotas} />
       </Container>
     </Provider>
   )
