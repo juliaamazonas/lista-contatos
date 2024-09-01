@@ -1,10 +1,9 @@
+import Formulario from '../../containers/FormularioCadastro'
+
 const Adicionar = () => (
-  <form>
-    <input type="text" placeholder="Nome" />
-    <input type="text" placeholder="Número" />
-    <input type="text" placeholder="E-mail" />
-    <button type="submit">Adicionar</button>
-  </form>
+  <>
+    <Formulario />
+  </>
 )
 
 export default Adicionar

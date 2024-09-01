@@ -1,4 +1,4 @@
-import BotaoAdd from '../../containers/BotaoAdd'
+import BotaoAdicionar from '../../components/BotaoAdicionar'
 import Header from '../../containers/Header'
 import ListaDeContatos from '../../containers/ListaDeContatos'
 
@@ -6,7 +6,7 @@ const Home = () => (
   <>
     <Header />
     <ListaDeContatos />
-    <BotaoAdd />
+    <BotaoAdicionar />
   </>
 )
 

@@ -10,19 +10,17 @@ const Contato = ({ nome, numero, email, id }: Props) => {
   const dispatch = useDispatch()
   const [editandoContato, setEditandoContato] = useState(false)
 
-  // Armazena o valor original
   const [nomeOriginal, setNomeOriginal] = useState(nome)
   const [numeroOriginal, setNumeroOriginal] = useState(numero)
   const [emailOriginal, setEmailOriginal] = useState(email)
 
-  // Armazena o valor que pode ser editado
   const [nomeInput, setNome] = useState(nome)
   const [numeroInput, setNumero] = useState(numero)
   const [emailInput, setEmail] = useState(email)
 
   const handleEdit = () => {
     setEditandoContato(true)
-    // Copia os valores originais para os inputs editáveis
+
     setNome(nomeOriginal)
     setNumero(numeroOriginal)
     setEmail(emailOriginal)
@@ -30,7 +28,7 @@ const Contato = ({ nome, numero, email, id }: Props) => {
 
   const handleCancel = () => {
     setEditandoContato(false)
-    // Reverte os valores para o original
+
     setNome(nomeOriginal)
     setNumero(numeroOriginal)
     setEmail(emailOriginal)
@@ -38,12 +36,11 @@ const Contato = ({ nome, numero, email, id }: Props) => {
 
   const handleSave = () => {
     setEditandoContato(false)
-    // Atualiza os valores originais com os valores editados
+
     setNomeOriginal(nomeInput)
     setNumeroOriginal(numeroInput)
     setEmailOriginal(emailInput)
 
-    // Despacha a ação para atualizar no estado global
     dispatch(
       atualizar({ id, nome: nomeInput, numero: numeroInput, email: emailInput })
     )

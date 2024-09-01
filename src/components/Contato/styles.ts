@@ -52,13 +52,13 @@ export const BarraAcoes = styled.div`
 `
 
 export const Botao = styled.button`
-  font-weight: bold;
+  font-weight: 300;
   font-size: 12px;
   color: #fff;
   padding: 8px 12px;
   border: none;
   cursor: pointer;
-  background-color: #2f3640;
+  background-color: ${variaveis.cinza};
   border-radius: 8px;
   margin-right: 8px;
 `

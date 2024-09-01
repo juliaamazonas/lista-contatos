@@ -43,9 +43,21 @@ const contatosSlice = createSlice({
           email: action.payload.email
         }
       }
+    },
+    adicionar: (state, action: PayloadAction<Contato>) => {
+      const contatoJaExiste = state.itens.find(
+        (contato: { nome: string }) =>
+          contato.nome.toLowerCase() === action.payload.nome.toLowerCase()
+      )
+
+      if (contatoJaExiste) {
+        alert('Já existe um contato com esse nome.')
+      } else {
+        state.itens.push(action.payload)
+      }
     }
   }
 })
 
-export const { remover, atualizar } = contatosSlice.actions
+export const { remover, atualizar, adicionar } = contatosSlice.actions
 export default contatosSlice.reducer

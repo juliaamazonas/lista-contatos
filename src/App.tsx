@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import EstiloGlobal, { Container } from './styles'
 import store from './store'
 import Home from './pages/Home'
+import Adicionar from './pages/Add'
 
 const rotas = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const rotas = createBrowserRouter([
   },
   {
     path: '/adicionar',
-    element: <h1>home</h1>
+    element: <Adicionar />
   }
 ])
 
